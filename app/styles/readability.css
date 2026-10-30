@@ -1,0 +1,263 @@
+/* Keep the existing scale, with clearer structure and readable secondary text. */
+.directory-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 0 0 24px;
+  color: #6a7d95;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+.directory-tabs {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.directory-tabs button {
+  padding: 10px 13px;
+  border: 1px solid #c5d2e3;
+  border-radius: 6px;
+  background: white;
+  color: #526c8e;
+  font-size: 12px;
+}
+.directory-tabs button.active {
+  background: #1c4587;
+  border-color: #1c4587;
+  color: white;
+}
+.contact-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.contact-card-top .person-avatar {
+  margin-bottom: 0;
+}
+.contact-kind {
+  font-size: 10px;
+  border: 1px solid #cbd8e8;
+  background: #f2f6fb;
+  color: #6580a3;
+  padding: 5px 7px;
+  border-radius: 4px;
+}
+.contact-emails {
+  margin-top: 20px;
+  border-top: 1px solid #d5dfec;
+  padding-top: 14px;
+  display: grid;
+  gap: 14px;
+}
+.contact-email > span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.3px;
+  color: #7386a0;
+  margin-bottom: 6px;
+}
+.contact-email button {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  color: #1c4587;
+  font-size: 12px;
+  line-height: 1.6;
+  max-width: 100%;
+}
+.contact-email button > span {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.contact-email button > svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.contact-email button:hover > span {
+  text-decoration: underline;
+}
+.contact-email small {
+  font-size: 11px;
+  color: #8996a6;
+}
+.person-card .contact-notes {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #7e8fa5;
+  margin: 16px 0 0;
+  border-top: 1px solid #e1e8f1;
+  padding-top: 12px;
+}
+:root {
+  --line: #d5deea;
+}
+.home-section-title {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #354b68;
+}
+.home-section-title h2 {
+  line-height: 1.4;
+}
+.feed-copy p,
+.resource-card-body > p {
+  line-height: 1.8;
+}
+.feed-copy p,
+.company-description {
+  color: #a9b9ce;
+}
+.feed-copy small,
+.section-description,
+.results-summary,
+.carousel-controls {
+  color: #91a7c2;
+}
+.important-links-grid small,
+.dark-event > span:nth-child(2) > small {
+  color: #9aafca;
+}
+.feed-category {
+  color: #edba83;
+}
+.search-tabs {
+  border: 1px solid #304c66;
+  border-radius: 3px;
+}
+.search-tabs button {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+.resource-card-body {
+  padding: 15px;
+}
+.resource-card-body > p {
+  color: #c0cfe4;
+}
+.resource-card h3 {
+  font-weight: 500;
+}
+.important-links-grid button {
+  min-height: 74px;
+}
+.feed-item {
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+.mission-card {
+  border-color: #405d7e;
+}
+.mission-card p {
+  color: #94abc7;
+}
+.home-main .page-footer,
+.home-main .page-footer > span:last-child {
+  color: #8fa6c3;
+}
+.document-row,
+.request-row,
+.event-full {
+  border-color: #cdd8e6;
+}
+.document-list,
+.requests-panel,
+.event-list,
+.person-card,
+.hub-card,
+.inner-main .news-card {
+  border-color: #c9d5e4;
+}
+.person-card,
+.hub-card,
+.inner-main .news-card {
+  box-shadow: 0 2px 6px #18385f06;
+}
+.inner-main .page-footer {
+  border-color: #cbd7e5;
+}
+.person-card p,
+.document-row p,
+.event-full p,
+.sample-note {
+  color: #697b92;
+}
+.search-box,
+.filter-bar select,
+.request-form input,
+.request-form select,
+.request-form textarea {
+  border-color: #b9c9dd;
+}
+.search-box input {
+  min-height: 44px;
+}
+.search-tabs {
+  gap: 10px;
+}
+.search-tabs button {
+  white-space: normal;
+}
+@media (max-width: 600px) {
+  .suite-brand {
+    font-size: 10px;
+  }
+  .suite-brand strong {
+    font-size: 12px;
+  }
+  .suite-brand {
+    gap: 6px;
+  }
+  .suite-search {
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width: 0;
+  }
+  .suite-search input {
+    min-width: 0;
+  }
+  .search-tabs {
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 4px 10px;
+  }
+  .search-tabs button {
+    font-size: 10px;
+    padding: 10px 0;
+  }
+  .important-links-grid button {
+    padding: 13px 10px;
+    gap: 8px;
+  }
+  .important-links-grid strong {
+    font-size: 11px;
+  }
+  .important-links-grid small {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+  .resource-card-body {
+    padding: 12px;
+  }
+  .resource-owner {
+    flex-wrap: wrap;
+  }
+  .resource-owner > svg {
+    width: 12px;
+  }
+  .feed-copy small {
+    line-height: 1.8;
+    display: block;
+  }
+  .mission-year {
+    display: none;
+  }
+  .home-main .page-footer > span:last-child {
+    flex-wrap: wrap;
+  }
+}
