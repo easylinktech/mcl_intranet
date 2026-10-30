@@ -1,13 +1,11 @@
 "use client";
-import { useWorkspaceAuth } from "@/components/auth/auth-context";
 import Link from "next/link";
 import { ArrowUpRight, Users } from "lucide-react";
 export function ProductHero() {
-  const { user } = useWorkspaceAuth();
   return (
     <section className="reference-welcome">
       <p className="reference-greeting">
-        Good morning, {user?.name || "IT user"}
+        Welcome to MCL Connect
       </p>
       <h1>
         Investing in <em>you</em>

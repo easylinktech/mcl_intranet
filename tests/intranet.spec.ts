@@ -24,7 +24,7 @@ test("home layout has centred navigation, no gutters and alternating sections", 
   await page.setViewportSize({ width: 1600, height: 1000 });
   await page.goto("/");
   await expect(
-    page.getByText("Good morning, IT user", { exact: true }),
+    page.getByText("Welcome to MCL Connect", { exact: true }),
   ).toBeVisible();
   const nav = await page
     .getByRole("navigation", { name: "Main navigation" })
@@ -46,7 +46,7 @@ test("home layout has centred navigation, no gutters and alternating sections", 
         .locator(selector)
         .evaluate((el) => getComputedStyle(el).backgroundColor),
     ).toBe("rgb(255, 255, 255)");
-  await expect(page.locator(".header-account")).toHaveText("IT");
+  await expect(page.getByRole("button", { name: "Sign out", exact: true })).toHaveCount(0);
   const welcome = await page.locator(".reference-welcome").boundingBox();
   expect(welcome!.x).toBeLessThan(160);
   expect(welcome!.width).toBeGreaterThan(500);
@@ -72,16 +72,9 @@ test("home layout has centred navigation, no gutters and alternating sections", 
   });
 });
 
-test.beforeEach(async ({ context, page }, info) => {
+test.beforeEach(async ({ page }, info) => {
   if (!info.title.startsWith("scroll reveals"))
     await page.emulateMedia({ reducedMotion: "reduce" });
-  if (!info.title.startsWith("sign-in flow"))
-    await context.addInitScript(() =>
-      sessionStorage.setItem(
-        "mcl-session",
-        JSON.stringify({ email: "it@metalcrowns.com" }),
-      ),
-    );
 });
 
 test("scroll reveals animate once and respect reduced motion", async ({
@@ -122,45 +115,21 @@ test("scroll reveals animate once and respect reduced motion", async ({
   );
 });
 
-test("sign-in flow: email-only access, session and sign out", async ({
-  page,
-}) => {
+test("demo opens directly without sign-in prompts", async ({ page }) => {
   await page.goto("/people/staff-directory");
-  await expect(page).toHaveURL(/sign-in\?next=/);
-  await expect(page.locator('input[type="password"]')).toHaveCount(0);
-  await expect(page.getByRole("button", { name: /password/i })).toHaveCount(0);
-  await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  await expect(page).toHaveURL(/sign-in\?next=/);
-  await page.getByLabel("Email address", { exact: true }).fill("visitor@example.com");
-  await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page).toHaveURL(/people\/staff-directory/);
-  await expect(
-    page.getByRole("heading", { name: "All People", exact: true }),
-  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "All People", exact: true })).toBeVisible();
+  await expect(page.locator('input[type="email"], input[type="password"]')).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /sign in|sign out/i })).toHaveCount(0);
   await page.reload();
-  await expect(
-    page.getByRole("heading", { name: "All People", exact: true }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Sign out", exact: true }).click();
-  await expect(page).toHaveURL(/\/sign-in/);
-  await page.goto("/");
-  await expect(page).toHaveURL(/\/sign-in/);
-  await page.screenshot({
-    path: "test-results/sign-in-desktop.png",
-    fullPage: true,
-    animations: "disabled",
-  });
-  await page.setViewportSize({ width: 390, height: 844 });
-  expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
-  ).toBe(true);
-  await page.screenshot({
-    path: "test-results/sign-in-mobile.png",
-    fullPage: true,
-    animations: "disabled",
-  });
+  await expect(page.getByRole("heading", { name: "All People", exact: true })).toBeVisible();
+  await page.goto("/sign-in?next=%2Fpeople%2Fstaff-directory");
+  await expect(page).toHaveURL(/people\/staff-directory/);
+  await page.goto("/sign-in");
+  await expect(page).toHaveURL("/");
+  await expect(page.getByText("Welcome to MCL Connect", { exact: true })).toBeVisible();
+  await page.goto("/sign-in?next=%2F%2Fevil.example");
+  await expect(page).toHaveURL("/");
 });
 
 test("hover dropdowns open without clicking and priority people appear first", async ({
@@ -214,7 +183,7 @@ test("homepage sections, branding and navigation without platform chrome", async
 }) => {
   await page.goto("/");
   await expect(
-    page.getByText("Good morning, IT user", { exact: true }),
+    page.getByText("Welcome to MCL Connect", { exact: true }),
   ).toBeVisible();
   expect(
     await page

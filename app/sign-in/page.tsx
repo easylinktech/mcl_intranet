@@ -1,11 +1,16 @@
-import { Suspense } from "react";
-import { SignInForm } from "@/components/auth/sign-in-form";
+"use client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+// Keep old bookmarks working without showing a sign-in screen.
 export default function SignInPage() {
-  return (
-    <Suspense
-      fallback={<div className="workspace-loading">Opening sign-in…</div>}
-    >
-      <SignInForm />
-    </Suspense>
-  );
+  const router = useRouter();
+  useEffect(() => {
+    const next = new URLSearchParams(window.location.search).get("next");
+    const target = next && /^\/(?![\\/])/.test(next) && !next.startsWith("/sign-in")
+      ? next
+      : "/";
+    router.replace(target);
+  }, [router]);
+  return <div className="workspace-loading">Opening your workspace...</div>;
 }

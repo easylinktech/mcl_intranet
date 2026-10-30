@@ -8,9 +8,7 @@ import {
   X,
   ArrowUpRight,
   Search,
-  LogOut,
 } from "lucide-react";
-import { useWorkspaceAuth } from "@/components/auth/auth-context";
 import {
   resourceCategories,
   knowledgeCategories,
@@ -23,7 +21,6 @@ export function SiteHeader() {
   const [mobile, setMobile] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const { signOut } = useWorkspaceAuth();
   const openOnHover = (title: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     if (window.matchMedia("(hover: hover)").matches) setOpen(title);
@@ -205,14 +202,7 @@ export function SiteHeader() {
         >
           <Search size={19} />
         </Link>
-        <div className="header-account">
-          <span className="account-avatar" aria-label="IT user">
-            IT
-          </span>
-          <button onClick={signOut} aria-label="Sign out" title="Sign out">
-            <LogOut size={18} />
-          </button>
-        </div>
+
       </div>
     </header>
   );
