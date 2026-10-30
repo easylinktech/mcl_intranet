@@ -1,15 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowRight, Eye, EyeOff, Mail, LockKeyhole } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { useWorkspaceAuth } from "./auth-context";
 export function SignInForm() {
   const { signIn } = useWorkspaceAuth();
   const router = useRouter();
   const params = useSearchParams();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [visible, setVisible] = useState(false);
   const [error, setError] = useState("");
   return (
     <main className="sign-in-page">
@@ -50,14 +48,14 @@ export function SignInForm() {
             onSubmit={(e) => {
               e.preventDefault();
               setError("");
-              if (signIn(email, password)) {
+              if (signIn(email)) {
                 const next = params.get("next");
                 router.replace(
                   next?.startsWith("/") && !next.startsWith("//") ? next : "/",
                 );
               } else
                 setError(
-                  "That email and password don’t match. Check your credentials and try again.",
+                  "Please enter a valid email address.",
                 );
             }}
           >
@@ -75,27 +73,6 @@ export function SignInForm() {
                 />
               </div>
             </label>
-            <label>
-              Password
-              <div className="sign-in-input">
-                <LockKeyhole size={19} />
-                <input
-                  type={visible ? "text" : "password"}
-                  autoComplete="current-password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                />
-                <button
-                  type="button"
-                  aria-label={visible ? "Hide password" : "Show password"}
-                  onClick={() => setVisible(!visible)}
-                >
-                  {visible ? <EyeOff size={19} /> : <Eye size={19} />}
-                </button>
-              </div>
-            </label>
             {error && (
               <p className="sign-in-error" role="alert">
                 {error}
@@ -106,7 +83,7 @@ export function SignInForm() {
             </button>
           </form>
           <small className="sign-in-note">
-            Presentation access only. Credentials are checked in this browser.
+            Demo access. Enter your email to continue; no password required.
           </small>
         </div>
         <div className="sign-in-footer">

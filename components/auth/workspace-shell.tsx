@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FileText, ShieldCheck, CalendarDays } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { SESSION_KEY, type SessionUser, signInAccounts } from "@/lib/auth";
+import { SESSION_KEY, type SessionUser, getDemoUser } from "@/lib/auth";
 import { AuthContext } from "./auth-context";
 export function WorkspaceShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,11 +15,8 @@ export function WorkspaceShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const saved = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "null");
-      const match = signInAccounts.find((a) => a.email === saved?.email);
-      if (match) {
-        const { password: _, ...profile } = match;
-        setUser(profile);
-      }
+      const profile = typeof saved?.email === "string" ? getDemoUser(saved.email) : null;
+      if (profile) setUser(profile);
     } catch {
       sessionStorage.removeItem(SESSION_KEY);
     }
@@ -33,12 +30,9 @@ export function WorkspaceShell({ children }: { children: React.ReactNode }) {
       );
     }
   }, [ready, user, pathname, router]);
-  const signIn = (email: string, password: string) => {
-    const match = signInAccounts.find(
-      (a) => a.email === email.trim().toLowerCase() && a.password === password,
-    );
-    if (!match) return false;
-    const { password: _, ...profile } = match;
+  const signIn = (email: string) => {
+    const profile = getDemoUser(email);
+    if (!profile) return false;
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(profile));
     setUser(profile);
     return true;

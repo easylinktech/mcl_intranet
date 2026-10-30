@@ -122,33 +122,16 @@ test("scroll reveals animate once and respect reduced motion", async ({
   );
 });
 
-test("sign-in flow: invalid credentials, password visibility, session and sign out", async ({
+test("sign-in flow: email-only access, session and sign out", async ({
   page,
 }) => {
   await page.goto("/people/staff-directory");
   await expect(page).toHaveURL(/sign-in\?next=/);
-  await page
-    .getByLabel("Email address", { exact: true })
-    .fill("wrong@metalcrowns.com");
-  await page.getByLabel("Password", { exact: true }).fill("wrong-password");
+  await expect(page.locator('input[type="password"]')).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /password/i })).toHaveCount(0);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  await expect(page.locator(".sign-in-error")).toContainText("don’t match");
-  await expect(page.locator(".preview-access")).toHaveCount(0);
-  await expect(
-    page.getByText("EXPLORE THE WORKSPACE", { exact: true }),
-  ).toHaveCount(0);
-  await expect(page.getByText("Alpha@2026", { exact: true })).toHaveCount(0);
-  await page
-    .getByLabel("Email address", { exact: true })
-    .fill("it@metalcrowns.com");
-  await page.getByLabel("Password", { exact: true }).fill("Alpha@2026");
-  await page
-    .getByRole("button", { name: "Show password", exact: true })
-    .click();
-  await expect(page.getByLabel("Password", { exact: true })).toHaveAttribute(
-    "type",
-    "text",
-  );
+  await expect(page).toHaveURL(/sign-in\?next=/);
+  await page.getByLabel("Email address", { exact: true }).fill("visitor@example.com");
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await expect(page).toHaveURL(/people\/staff-directory/);
   await expect(
