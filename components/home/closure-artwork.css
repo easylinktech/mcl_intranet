@@ -1,0 +1,104 @@
+.closure-artwork {
+  isolation: isolate;
+  position: relative;
+  width: 100%;
+  max-width: 670px;
+  aspect-ratio: 8/7;
+  margin: 24px auto 0;
+  overflow: hidden;
+  contain: paint;
+  pointer-events: none;
+  user-select: none;
+}
+.closure-artwork::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    #030c1900 0%,
+    #030c1940 25%,
+    #030c19c9 62%,
+    #030c19 100%
+  );
+}
+.closure-artwork svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.closure-orbit {
+  animation: closure-orbit-turn 65s linear infinite;
+  animation-play-state: paused;
+}
+.closure-main-float {
+  animation: closure-main-drift 8s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.closure-small-float {
+  animation: closure-small-drift 7s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.closure-white-float {
+  animation-delay: -3s;
+  animation-duration: 9s;
+}
+.closure-spark {
+  animation: closure-soft-glow 5s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.closure-artwork.is-in-view .closure-orbit,
+.closure-artwork.is-in-view .closure-main-float,
+.closure-artwork.is-in-view .closure-small-float,
+.closure-artwork.is-in-view .closure-spark {
+  animation-play-state: running;
+}
+@keyframes closure-orbit-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes closure-main-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-7deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-3deg);
+  }
+}
+@keyframes closure-small-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes closure-soft-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+@media (max-width: 700px) {
+  .closure-artwork {
+    max-width: 430px;
+    margin-top: 20px;
+    aspect-ratio: 8/7;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .closure-artwork .closure-orbit,
+  .closure-artwork .closure-main-float,
+  .closure-artwork .closure-small-float,
+  .closure-artwork .closure-spark {
+    animation: none;
+  }
+}

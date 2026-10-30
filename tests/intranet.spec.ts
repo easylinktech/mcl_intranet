@@ -1,5 +1,23 @@
 import { test, expect } from "@playwright/test";
 
+test('scroll reveals artwork fills the right column and respects reduced motion',async({page})=>{
+ await page.setViewportSize({width:1600,height:1000});
+ await page.goto('/');
+ const art=page.locator('.closure-artwork');
+ await art.scrollIntoViewIfNeeded();
+ await expect(art).toHaveClass(/is-in-view/);
+ await expect(art).toHaveAttribute('aria-hidden','true');
+ await expect(art).toHaveText('');
+ await expect(art.locator('.closure-orbit')).toHaveCSS('animation-play-state','running');
+ const column=await page.locator('.home-updates>.resource-column').boundingBox();
+ const graphic=await art.boundingBox();
+ expect(graphic!.x).toBeGreaterThanOrEqual(column!.x);
+ expect(graphic!.width).toBeLessThanOrEqual(column!.width+1);
+ await page.emulateMedia({reducedMotion:'reduce'});
+ await expect(art.locator('.closure-orbit')).toHaveCSS('animation-name','none');
+ await page.locator('.home-updates').screenshot({path:'test-results/closure-artwork.png',animations:'disabled'});
+});
+
 test("home layout has centred navigation, no gutters and alternating sections", async ({
   page,
 }) => {
@@ -32,8 +50,26 @@ test("home layout has centred navigation, no gutters and alternating sections", 
   const welcome = await page.locator(".reference-welcome").boundingBox();
   expect(welcome!.x).toBeLessThan(160);
   expect(welcome!.width).toBeGreaterThan(500);
-  expect(await page.locator('.reference-welcome').evaluate(el=>getComputedStyle(el,'::before').backgroundImage)).toContain('crown-production.png');
-  await page.screenshot({path:'test-results/hero-background.png',animations:'disabled'});
+  expect(
+    await page
+      .locator(".hero-opening")
+      .evaluate((el) => getComputedStyle(el, "::before").backgroundImage),
+  ).toContain("plastic-closures.png");
+  const hero = await page.locator(".hero-opening").boundingBox();
+  const updates = await page.locator(".home-updates").boundingBox();
+  expect(hero!.y + hero!.height).toBeGreaterThanOrEqual(1000);
+  expect(updates!.y).toBeGreaterThanOrEqual(hero!.y + hero!.height);
+  expect(
+    await page
+      .locator(
+        ".hero-opening .home-news,.hero-opening .important-links,.hero-opening .home-events",
+      )
+      .count(),
+  ).toBe(0);
+  await page.screenshot({
+    path: "test-results/hero-background.png",
+    animations: "disabled",
+  });
 });
 
 test.beforeEach(async ({ context, page }, info) => {

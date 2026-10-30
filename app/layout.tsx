@@ -7,6 +7,7 @@ import { WorkspaceShell } from "@/components/auth/workspace-shell";
 import "./styles/refresh.css";
 import "./styles/reference.css";
 import "./styles/motion.css";
+import "./styles/home-sections.css";
 export const metadata: Metadata = {
   title: "MCL Connect | Our people. Our place.",
   description:

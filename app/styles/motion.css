@@ -3,30 +3,183 @@
   position: relative;
   isolation: isolate;
 }
-.reference-welcome::before {
+.home-content {
+  isolation: isolate;
+}
+.hero-opening::before {
   content: "";
   position: absolute;
-  inset: -12px -14px 0 -24px;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  max-height: 100%;
+  transform: translateX(-50%);
   z-index: -1;
   pointer-events: none;
   background:
     linear-gradient(
       90deg,
-      #031528ed 0%,
-      #031528c9 45%,
-      #03152870 75%,
-      #031528d6 100%
+      #031528db 0%,
+      #031528b5 45%,
+      #031528b5 75%,
+      #031528db 100%
     ),
-    linear-gradient(0deg, #031528 0%, #03152800 50%),
-    url("/images/crown-production.png") center/cover no-repeat;
-  mask-image: linear-gradient(
-    180deg,
-    transparent,
-    #000 10%,
-    #000 78%,
-    transparent
+    linear-gradient(0deg, #031528 0%, #03152800 55%),
+    url("/images/plastic-closures.png") center/cover no-repeat;
+  mask-image: linear-gradient(180deg, #000, #000 65%, transparent);
+}
+.hero-opening {
+  min-height: calc(100svh - 115px);
+  align-items: center;
+  align-content: center;
+  padding-top: 38px;
+  padding-bottom: 45px;
+}
+.hero-opening .reference-welcome {
+  min-height: 0;
+  padding-bottom: 0;
+}
+.home-updates {
+  border-top: 1px solid #29415e80;
+  padding-top: 45px;
+}
+.home-updates .home-news,
+.home-updates .important-links {
+  margin-top: 0;
+}
+@media (max-width: 700px) {
+  .hero-opening {
+    min-height: calc(100svh - 108px);
+    padding-top: 28px;
+    padding-bottom: 36px;
+    gap: 35px;
+  }
+  .home-updates {
+    padding-top: 32px;
+  }
+}
+.reference-welcome::before {
+  content: none;
+}
+.reference-welcome {
+  padding-bottom: 30px;
+}
+.reference-welcome .reference-introduction {
+  max-width: 550px;
+}
+.welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 23px;
+  padding-bottom: 8px;
+}
+.welcome-cta {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  min-height: 48px;
+  padding: 13px 17px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.5;
+  isolation: isolate;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease;
+}
+.welcome-cta-primary {
+  background: linear-gradient(120deg, #e3c68d, #f0dcb3);
+  color: #183c65;
+  border-color: #e9d0a1;
+  box-shadow: 0 4px 13px #00000016;
+}
+.welcome-cta-secondary {
+  background: #15385970;
+  color: #e2edf9;
+  border-color: #91a8c47a;
+  backdrop-filter: blur(5px);
+  gap: 10px;
+}
+.welcome-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    105deg,
+    transparent 15%,
+    #ffffff45 48%,
+    transparent 80%
   );
-  border-radius: 6px;
+  transform: translateX(-125%);
+  transition: transform 0.55s ease;
+  pointer-events: none;
+}
+.welcome-cta > svg:last-child {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.welcome-cta:hover,
+.welcome-cta:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 21px #00000030;
+}
+.welcome-cta:hover::before,
+.welcome-cta:focus-visible::before {
+  transform: translateX(125%);
+}
+.welcome-cta:hover > svg:last-child,
+.welcome-cta:focus-visible > svg:last-child {
+  transform: translate(2px, -2px);
+}
+.welcome-cta-secondary:hover,
+.welcome-cta-secondary:focus-visible {
+  background: #285b898c;
+  border-color: #bfcee2;
+}
+.welcome-cta:active {
+  transform: translateY(-1px);
+}
+@media (max-width: 700px) {
+  .welcome-actions {
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .welcome-cta {
+    padding: 12px 13px;
+    min-height: 46px;
+    font-size: 12px;
+    gap: 10px;
+  }
+  .welcome-cta-secondary {
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-cta,
+  .welcome-cta::before,
+  .welcome-cta > svg:last-child {
+    transition: none;
+  }
+  .welcome-cta:hover,
+  .welcome-cta:focus-visible,
+  .welcome-cta:active,
+  .welcome-cta:hover > svg:last-child,
+  .welcome-cta:focus-visible > svg:last-child {
+    transform: none;
+  }
+  .welcome-cta::before {
+    display: none;
+  }
 }
 @media (max-width: 700px) {
   .reference-welcome::before {
