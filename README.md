@@ -19,15 +19,9 @@ pnpm start
 
 The production build exports a static website to `out/`. It can be served on any static host. There is no backend, server-side authentication, API, or email delivery.
 
-## Presentation sign-in
+## Demo access
 
-Open `/sign-in`. Hard-coded access accounts are in `lib/auth.ts`:
-
-- `it@metalcrowns.com` / `Alpha@2026` — IT user
-
-This is a browser-only presentation gate, not secure authentication. It stores the selected profile in sessionStorage; passwords are never saved in browser storage. Refresh preserves the current session in that tab, and Sign out clears it. Requests and RSVPs remain in localStorage. A real deployment requiring private employee data needs proper server-side authentication and access control.
-
-The latest redesign was checked with TypeScript and local browser tests; no production build was run for that change.
+The workspace opens directly without an email, password or sign-in prompt. Old `/sign-in` links redirect into the workspace. Requests and RSVPs remain in localStorage.
 
 Run the browser interaction checks with `pnpm test:e2e`. The test configuration uses installed Google Chrome on Windows; set `CHROME_PATH` to your Chrome executable on another system.
 
@@ -40,11 +34,11 @@ app/
   knowledge-hub/[slug]/      Six knowledge categories
   people/[group]/            Five people sections
   events/, help/, learning/, news/, requests/
-  sign-in/                   Presentation sign-in route
+  sign-in/                   Legacy redirect into the workspace
   data/                      Directory, navigation, articles and library content
   styles/                    Shared styles and responsive portal design
 components/
-  auth/                      Sign-in, session context and workspace shell
+  auth/                      Workspace shell
   layout/                    Header, dropdown navigation, headings and footer
   home/                      Homepage and search centre
   directory/                 Contact cards, filters and team views
@@ -66,7 +60,7 @@ Edit source under these folders. `out/` and `.next/` are generated build output 
 - Comfortable body text, clear borders, hover effects and responsive layouts.
 - Search centre with category tabs, live filtering, resource previews and pagination.
 - Knowledge Hub and Learning Centre with readable working guides and training briefs.
-- MCL directory with the supplied account register: staff, shared mailboxes and distribution lists, including current and Guala email addresses.
+- MCL directory with the supplied account register: staff, shared mailboxes and distribution lists, using only supplied Guala email addresses.
 - News, employee directory, document categories, brand assets and business-card contact sheets.
 - Department and contact-type filtering, article dialogs and downloadable text guides.
 - Leave and IT requests, colleague appreciation, request history and event RSVPs.
@@ -74,7 +68,7 @@ Edit source under these folders. `out/` and `.next/` are generated build output 
 - Mobile navigation, form validation, help FAQs and feedback messages.
 - Hover effects, entrance animations and support for reduced motion preferences.
 
-Directory names, departments and emails were transcribed from the supplied screenshots in `app/data/directory.ts`. The register contains 36 account rows and four distribution lists; Alice is retained from the earlier staff list without an inferred email. Shared entries identify their listed contacts. Blank departments and missing emails are explicitly marked as not provided. The newer register supplies Justin Nyukuri and Arnold Kipsang as the full names; earlier spellings remain searchable in notes. Both email columns are preserved without assuming migration status. License types and mailbox usage are not included in the staff directory.
+Directory names, departments and emails were transcribed from the supplied screenshots in `app/data/directory.ts`. The register contains 36 account rows and four distribution lists; Alice is retained from the earlier staff list without an inferred email. Shared entries identify their listed contacts. Blank departments and missing emails are explicitly marked as not provided. The newer register supplies Justin Nyukuri and Arnold Kipsang as the full names; earlier spellings remain searchable in notes. Only supplied Guala email addresses are retained; legacy email addresses have been removed. License types and mailbox usage are not included in the staff directory.
 
 Directory order follows the requested priority: Gurdip Singh, John Karari, Siddharth Naik, Chike Asoh and Brian Okech, then the remaining team, shared mailboxes and distribution lists. This is a display order, not an inferred corporate reporting hierarchy. Executive and department-head appointments are not inferred. The proposed CEO message is explicitly awaiting leadership approval; no CEO identity is assigned.
 

@@ -38,7 +38,6 @@ function ContactCard({ person: p }: { person: DirectoryEntry }) {
       {p.role && <p className="contact-role">{p.role}</p>}
       <div className="contact-emails">
         {[
-          { label: "Current email", value: p.email },
           { label: "Guala email", value: p.gualaEmail },
         ].map((e) => (
           <div className="contact-email" key={e.label}>

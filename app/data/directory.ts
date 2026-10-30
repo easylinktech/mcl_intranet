@@ -2,7 +2,6 @@ export type DirectoryEntry = {
   name: string;
   department: string;
   role: string;
-  email: string;
   gualaEmail: string;
   kind: "Person" | "Shared mailbox" | "Distribution list";
   notes?: string;
@@ -14,7 +13,6 @@ const rows: [
   string,
   string,
   string,
-  string,
   DirectoryEntry["kind"],
   string?,
   string?,
@@ -22,7 +20,6 @@ const rows: [
   [
     "Debra Abwao",
     "Admin",
-    "mcladmin@metalcrowns.com",
     "dAbwao@gualaclosures.com",
     "Person",
     "Admin",
@@ -30,7 +27,6 @@ const rows: [
   [
     "Costing team",
     "Costing",
-    "costing@metalcrowns.com",
     "bOkello@gualaclosures.com",
     "Shared mailbox",
     undefined,
@@ -39,28 +35,24 @@ const rows: [
   [
     "Chris Muimi",
     "Costing",
-    "costing@metalcrowns.com",
     "cMuimi@gualaclosures.com",
     "Person",
   ],
   [
     "Livingstone Okwisia",
     "Costing",
-    "livingstone@metalcrowns.com",
     "lOkwisia@gualaclosures.com",
     "Person",
   ],
   [
     "Dominic Owino",
     "Exports",
-    "dominic@metalcrowns.com",
     "dOwino@gualaclosures.com",
     "Person",
   ],
   [
     "Justin Nyukuri",
     "Exports",
-    "mclimpex@metalcrowns.com",
     "jNyakuri@gualaclosures.com",
     "Person",
     "Impex",
@@ -69,14 +61,12 @@ const rows: [
   [
     "Chike Asoh",
     "Fabrication",
-    "chike@metalcrowns.com",
     "cAsoh@gualaclosures.com",
     "Person",
   ],
   [
     "Fabrication team",
     "Fabrication",
-    "Fabrication@metalcrowns.com",
     "fabrication.ke@gualaclosures.com",
     "Shared mailbox",
     undefined,
@@ -85,21 +75,18 @@ const rows: [
   [
     "Thalamuthu Nadar",
     "Fabrication",
-    "thalamuthu@metalcrowns.com",
     "nThalamuthu@gualaclosures.com",
     "Person",
   ],
   [
     "John Mbugua",
     "Finance",
-    "accounts@metalcrowns.com",
     "jMbugua@gualaclosures.com",
     "Person",
   ],
   [
     "Brian Okech",
     "Finance",
-    "brian@metalcrowns.com",
     "bOkech@gualaclosures.com",
     "Person",
     "Senior Accountant",
@@ -107,28 +94,24 @@ const rows: [
   [
     "Naomi Muthumbi",
     "Finance",
-    "naomi@metalcrowns.com",
     "nMuthumbi@gualaclosures.com",
     "Person",
   ],
   [
     "Meshack Mwanja",
     "Finance",
-    "dispatch@metalcrowns.com",
     "dispatch.ke@gualaclosures.com",
     "Person",
   ],
   [
     "Benjamin Muli",
     "Human Resources",
-    "hrd@metalcrowns.com",
     "hrd.ke@gualaclosures.com",
     "Person",
   ],
   [
     "John Karari",
     "Human Resources",
-    "john@metalcrowns.com",
     "jKarari@gualaclosures.com",
     "Person",
     "HR",
@@ -136,28 +119,24 @@ const rows: [
   [
     "ICT Admin",
     "ICT",
-    "it@metalcrowns.com",
     "ict.ke@gualaclosures.com",
     "Shared mailbox",
   ],
   [
     "Meeting Email",
     "Boardroom",
-    "meeting@metalcrowns.com",
     "meeting.ke@gualaclosures.com",
     "Shared mailbox",
   ],
   [
     "Reception",
     "Metal Crowns Kenya",
-    "reception@metalcrowns.com",
     "reception.ke@gualaclosures.com",
     "Shared mailbox",
   ],
   [
     "Nathan Githinji",
     "Maintenance",
-    "nathan@metalcrowns.com",
     "nGithinji@gualaclosures.com",
     "Person",
     "Maintenance",
@@ -165,7 +144,6 @@ const rows: [
   [
     "Pravin Karekar",
     "Maintenance",
-    "pravin@metalcrowns.com",
     "pKarekar@gualaclosures.com",
     "Person",
     "Maintenance",
@@ -173,7 +151,6 @@ const rows: [
   [
     "Gurdip Singh",
     "Director",
-    "gurdip@metalcrowns.com",
     "gurdip@gualaclosures.com",
     "Person",
     "Director",
@@ -181,70 +158,60 @@ const rows: [
   [
     "Tanay Shanbag",
     "Plant Manager Tanzania",
-    "tanay@metalcrowns.com",
     "tShanbag@gualaclosures.com",
     "Person",
   ],
   [
     "Dar es Salaam",
     "Tanzania Dar",
-    "mclDar@metalcrowns.com",
     "dar.tz@gualaclosures.com",
     "Shared mailbox",
   ],
   [
     "Suryakant Nirala",
     "Admin Tanzania",
-    "suryakant@metalcrowns.com",
     "sNirala@gualaclosures.com",
     "Person",
   ],
   [
     "Quality Tanzania",
     "Quality Control Tanzania",
-    "qualitytz@metalcrowns.com",
     "quality.tz@gualaclosures.com",
     "Shared mailbox",
   ],
   [
     "Robert Wairimu",
     "Plastics",
-    "Robert@metalcrowns.com",
     "wRobert@gualaclosures.com",
     "Person",
   ],
   [
     "Siddharth Naik",
     "Plastics",
-    "naik@metalcrowns.com",
     "sNaik@gualaclosures.com",
     "Person",
   ],
   [
     "Amit Kumar",
     "Printing",
-    "amit@metalcrowns.com",
     "aKumar@gualaclosures.com",
     "Person",
   ],
   [
     "Denis Maingi",
     "Printing",
-    "Platemaking@metalcrowns.com",
     "platemaking.ke@gualaclosures.com",
     "Person",
   ],
   [
     "Alex Mwangi",
     "Studio Kenya",
-    "studio@metalcrowns.com",
     "Studio.ke@gualaclosures.com",
     "Person",
   ],
   [
     "Myra Minayo",
     "Quality Control Kenya",
-    "myra@metalcrowns.com",
     "mMinayo@gualaclosures.com",
     "Person",
     "QC",
@@ -252,14 +219,12 @@ const rows: [
   [
     "Quality",
     "Quality Control Kenya",
-    "quality@metalcrowns.com",
     "quality.mc@gualaclosures.com",
     "Shared mailbox",
   ],
   [
     "Emmanuel Kibet",
     "Engineering Stores",
-    "spares@metalcrowns.com",
     "spares.ke@gualaclosures.com",
     "Person",
     "Stores",
@@ -267,7 +232,6 @@ const rows: [
   [
     "Arnold Kipsang",
     "Warehouse",
-    "warehouse@metalcrowns.com",
     "warehouse.ke@gualaclosures.com",
     "Person",
     "Warehouse",
@@ -276,21 +240,18 @@ const rows: [
   [
     "Gunwant Parmar",
     "",
-    "gunwant@metalcrowns.com",
     "gParmar@gualaclosures.com",
     "Person",
   ],
   [
     "Metal Crowns Scanner",
     "",
-    "scanner@metalcrowns.com",
     "scanner.mcl@gualaclosures.com",
     "Shared mailbox",
   ],
   [
     "Contact Us",
     "",
-    "contactus@metalcrowns.com",
     "contactus.ke@gualaclosures.com",
     "Distribution list",
     undefined,
@@ -299,7 +260,6 @@ const rows: [
   [
     "Data Protection",
     "",
-    "dpo@metalcrowns.com",
     "dpo.ke@gualaclosures.com",
     "Distribution list",
     undefined,
@@ -308,7 +268,6 @@ const rows: [
   [
     "Sales",
     "",
-    "sales@metalcrowns.com",
     "sales.mcl@gualaclosures.com",
     "Distribution list",
     undefined,
@@ -317,7 +276,6 @@ const rows: [
   [
     "Logistics Department",
     "",
-    "logistics-dept@metalcrowns.com",
     "",
     "Distribution list",
     undefined,
@@ -326,7 +284,6 @@ const rows: [
   [
     "Alice",
     "Administration",
-    "",
     "",
     "Person",
     "Receptionist",
@@ -355,10 +312,9 @@ function seniority(entry: DirectoryEntry) {
 }
 
 export const directory: DirectoryEntry[] = rows
-  .map(([name, department, email, gualaEmail, kind, role, notes]) => ({
+  .map(([name, department, gualaEmail, kind, role, notes]) => ({
     name,
     department,
-    email,
     gualaEmail,
     kind,
     role: role || "",
@@ -381,7 +337,6 @@ export function matchesContact(entry: DirectoryEntry, query: string) {
     entry.name,
     entry.department,
     entry.role,
-    entry.email,
     entry.gualaEmail,
     entry.notes || "",
     entry.kind,

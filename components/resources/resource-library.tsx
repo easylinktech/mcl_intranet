@@ -35,7 +35,7 @@ export function ResourceLibrary({
     (section === "resources" ? "Resources" : "Knowledge Hub");
   const entries = slug ? library[slug] || [] : [];
   const contact = directory.find((p) => p.name === person)!;
-  const cardText = `${contact.name}\n${contact.role || contact.department}\nMetal Crowns Limited\n${contact.gualaEmail || contact.email}\n${contact.email}`;
+  const cardText = `${contact.name}\n${contact.role || contact.department}\nGuala Closures\n${contact.gualaEmail || "Email not provided"}`;
   return (
     <div className="portal-page">
       <PageHeading
@@ -196,13 +196,11 @@ export function ResourceLibrary({
                 </label>
                 <div className="business-card-preview">
                   <img src="/logo.png" alt="" />
-                  <span>METAL CROWNS LIMITED</span>
+                  <span>GUALA CLOSURES</span>
                   <h3>{contact.name}</h3>
                   <p>{contact.role || contact.department}</p>
                   <small>
-                    {contact.gualaEmail ||
-                      contact.email ||
-                      "Email not provided"}
+                    {contact.gualaEmail || "Email not provided"}
                   </small>
                 </div>
                 <button

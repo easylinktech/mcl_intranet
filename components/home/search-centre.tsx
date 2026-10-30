@@ -52,7 +52,7 @@ const results = [
   },
   ...directory.map((p) => ({
     title: p.name,
-    description: [p.role, p.department, p.email, p.gualaEmail].join(" · "),
+    description: [p.role, p.department, p.gualaEmail].join(" · "),
     kind: "MCL Team",
     url: "/people/staff-directory?q=" + encodeURIComponent(p.name),
     image: "",

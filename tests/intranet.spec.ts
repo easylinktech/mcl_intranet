@@ -280,6 +280,10 @@ test("directory seniority, email copy, contact types and direct search", async (
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/people/staff-directory");
   await expect(page.getByText("41 contacts", { exact: true })).toBeVisible();
+  await expect(page.getByText("Current email", { exact: true })).toHaveCount(0);
+  const emails = await page.locator(".contact-email button span").allTextContents();
+  expect(emails.length).toBeGreaterThan(0);
+  expect(emails.every((email) => email.toLowerCase().endsWith("@gualaclosures.com"))).toBe(true);
   await expect(
     page.locator(".person-card").first().getByRole("heading"),
   ).toHaveText("Gurdip Singh");
@@ -366,6 +370,14 @@ test("search centre, policy downloads, brand assets and business cards", async (
   await expect(
     page.getByRole("heading", { name: "Brian Okech" }),
   ).toBeVisible();
+  await expect(page.locator(".business-card-preview")).toContainText("bOkech@gualaclosures.com");
+  const contactDownload = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download contact sheet" }).click();
+  const contactPath = await (await contactDownload).path();
+  const { readFile } = await import("node:fs/promises");
+  const contactText = await readFile(contactPath!, "utf-8");
+  expect(contactText).toContain("Guala Closures");
+  expect(contactText.match(/\S+@\S+/g)).toEqual(["bOkech@gualaclosures.com"]);
 });
 
 test("request history and RSVP persist across routes and reloads", async ({
