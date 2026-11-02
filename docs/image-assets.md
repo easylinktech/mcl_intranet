@@ -1,5 +1,17 @@
 # Product imagery
 
+## public/images/guala/
+
+Official Guala Closures website images downloaded on 2 November 2026 for the Guala Closures profile page. These replace the generated hero and crown images on that page and illustrate the five product categories, innovation and sustainability. The supplied Guala logo remains unchanged.
+
+Exact image URLs, source pages and download sizes are recorded in `public/images/guala/sources.json`. Attribution appears at the bottom of the profile page. The Crown Division photograph depicts Astir crown corks and is labelled as Group imagery, rather than as Metal Crowns products.
+
+- `group-hero.webp`: closure assortment from the official homepage.
+- `spirits.webp`, `wine.webp`, `beverages.webp`, `water.webp`, `condiments.webp`: product range photographs from the official homepage.
+- `crown-division.webp`: crown cork photograph from the Above Beverages page.
+- `innovation.webp`: decorative closure detail from the About Us page.
+- `sustainability.webp`: rooftop solar panels from the official homepage's sustainability section.
+
 ## public/images/crown-production.png
 
 Used in the leadership message section to replace the repeated product hero image. Generated with the built-in image tool.

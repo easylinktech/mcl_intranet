@@ -9,6 +9,7 @@ export function SiteFooter() {
       <div>
         <Link href="/people/staff-directory">Staff directory</Link>
         <Link href="/help">Help Centre</Link>
+        <Link href="/guala-closures">Guala Closures</Link>
         <Link href="/requests">My requests</Link>
       </div>
       <small>© 2026 Metal Crowns Limited · Internal workspace</small>

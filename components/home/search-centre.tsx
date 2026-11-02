@@ -15,6 +15,13 @@ import {
 import { directory } from "@/app/data/directory";
 import { library } from "@/app/data/library";
 const results = [
+  {
+    title: "Guala Closures",
+    description: "Group overview, Metal Crowns and the Crown Division, products, innovation and sustainability.",
+    kind: "Documents",
+    url: "/guala-closures",
+    image: "/images/guala_logo.svg",
+  },
   ...Object.entries(library)
     .flatMap(([slug, items]) =>
       items.map((item) => ({

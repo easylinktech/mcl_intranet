@@ -21,13 +21,18 @@ export function SiteHeader() {
   const [mobile, setMobile] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const openOnHover = (title: string) => {
+  const pointerType = useRef("mouse");
+  const cancelClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    if (window.matchMedia("(hover: hover)").matches) setOpen(title);
+    closeTimer.current = null;
+  };
+  const openOnHover = (title: string) => {
+    cancelClose();
+    setOpen(title);
   };
   const closeOnLeave = () => {
-    if (window.matchMedia("(hover: hover)").matches)
-      closeTimer.current = setTimeout(() => setOpen(""), 170);
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpen(""), 220);
   };
   useEffect(
     () => () => {
@@ -104,17 +109,36 @@ export function SiteHeader() {
           <div
             className="nav-group"
             key={g.title}
-            onMouseEnter={() => openOnHover(g.title)}
-            onMouseLeave={closeOnLeave}
+            onPointerEnter={(e) => {
+              pointerType.current = e.pointerType;
+              if (e.pointerType !== "touch") openOnHover(g.title);
+            }}
+            onPointerLeave={(e) => {
+              if (e.pointerType !== "touch") closeOnLeave();
+            }}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) {
+                cancelClose();
+                setOpen("");
+              }
+            }}
           >
             <button
               aria-expanded={open === g.title}
               aria-controls={"nav-" + g.title.replaceAll(" ", "-")}
               className={pathname.startsWith(g.path) ? "current" : ""}
-              onClick={() => setOpen(g.title)}
+              onClick={(e) => {
+                cancelClose();
+                setOpen((current) =>
+                  pointerType.current === "touch" || e.detail === 0
+                    ? current === g.title ? "" : g.title
+                    : g.title,
+                );
+              }}
               onKeyDown={(e) => {
                 if (e.key === "ArrowDown") {
                   e.preventDefault();
+                  cancelClose();
                   setOpen(g.title);
                   setTimeout(
                     () =>
@@ -165,6 +189,9 @@ export function SiteHeader() {
                     <ArrowUpRight size={14} />
                   </Link>
                 ))}
+                {g.title === "Knowledge Hub" && (
+                  <Link href="/guala-closures">Guala Closures <ArrowUpRight size={14} /></Link>
+                )}
               </div>
             )}
           </div>

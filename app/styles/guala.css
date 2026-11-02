@@ -1,0 +1,99 @@
+/* Guala Closures: editorial group profile, aligned with the MCL masthead. */
+.guala-feature { display: grid; grid-template-columns: minmax(200px, .7fr) minmax(0, 1.3fr); gap: 40px; align-items: center; max-width: 1280px; margin: auto; padding: 64px 40px; }
+.guala-logo-panel { background: #fff; border: 1px solid #dce6ed; border-radius: 14px; padding: 36px 28px; display: flex; align-items: center; justify-content: center; min-height: 160px; }
+.guala-logo-panel img { width: 100%; max-width: 318px; height: auto; }
+.guala-feature h2 { font-size: clamp(24px, 3vw, 36px); line-height: 1.2; margin: 12px 0 18px; }
+.guala-feature p { line-height: 1.75; color: #46556a; margin: 0 0 20px; }
+.guala-feature a, .guala-page a { display: inline-flex; align-items: center; gap: 10px; color: #15548c; font-weight: 650; text-decoration: none; }
+.guala-page { max-width: 1280px; padding-bottom: 64px; }
+.guala-page .content-heading { margin-bottom: 30px; }
+.guala-page .content-heading h1 { letter-spacing: -1.3px; }
+.guala-page h2 { font-size: clamp(26px, 2.7vw, 36px); font-weight: 650; letter-spacing: -1px; line-height: 1.2; margin: 14px 0 20px; color: #152f4c; }
+.guala-page p { font-size: 15px; line-height: 1.85; color: #53657a; margin: 0 0 24px; }
+.guala-page .section-kicker { display: block; color: #426478; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; line-height: 1.6; }
+.guala-intro { display: grid; grid-template-columns: 1.12fr 1fr; background: #102e4a; border-radius: 22px; overflow: hidden; box-shadow: 0 18px 45px #142c4714; }
+.guala-intro-copy { padding: clamp(30px, 4vw, 58px); }
+.guala-intro .section-kicker { color: #76d4e7; }
+.guala-page .guala-intro h2 { color: #fff; font-size: clamp(36px, 3.6vw, 52px); letter-spacing: -1.8px; margin: 22px 0; }
+.guala-intro h2 em { display: block; color: #7cd8e7; font-style: normal; }
+.guala-page .guala-intro p { color: #d0dce7; }
+.guala-page .guala-button { background: #fff; color: #163d5c; border-radius: 7px; padding: 14px 18px; font-size: 14px; transition: background .2s; }
+.guala-page .guala-button:hover { background: #c9f0f5; }
+.guala-page .guala-text-link { color: #e5f3fa; margin: 18px 0 0 20px; font-size: 13px; }
+.guala-intro-visual { position: relative; display: flex; align-items: flex-end; padding: 40px; min-height: 440px; isolation: isolate; background: #dfe7e8; }
+.guala-hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.guala-intro-visual::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, #0a263be6, transparent 65%); }
+.guala-intro .guala-logo-panel { position: absolute; top: 30px; left: 30px; right: 30px; min-height: 100px; padding: 25px; border: none; border-radius: 9px; box-shadow: 0 8px 25px #0d284719; }
+.guala-visual-caption { color: #fff; font-size: 10px; letter-spacing: 1.8px; line-height: 1.7; }
+.guala-highlights { display: grid; grid-template-columns: repeat(3, 1fr); padding: 28px 0; margin-bottom: 54px; border-bottom: 1px solid #dce5ed; }
+.guala-highlights > span { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 13px; font-weight: 600; color: #37556e; }
+.guala-highlights > span + span { border-left: 1px solid #dce5ed; }
+.guala-highlights svg { color: #0786a6; flex-shrink: 0; }
+.guala-connection { display: grid; grid-template-columns: .8fr 1.2fr; gap: 42px; align-items: center; margin-bottom: 70px; }
+.guala-connection-image { position: relative; height: 350px; border-radius: 16px; overflow: hidden; background: #153855; }
+.guala-connection-image > img { width: 100%; height: 100%; object-fit: cover; }
+.guala-connection-image > span { position: absolute; inset: auto 0 0; padding: 40px 28px 26px; color: #fff; background: linear-gradient(0deg, #102d48, transparent); font-size: 13px; font-weight: 700; letter-spacing: 2px; }
+.guala-connection-image > span > span { display: block; font-size: 12px; font-weight: 400; letter-spacing: .4px; margin-top: 10px; color: #d8e7f3; }
+.guala-page a > svg { flex-shrink: 0; transition: transform .2s; }
+.guala-page a:hover > svg { transform: translate(2px, -2px); }
+.guala-page a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.guala-products { background: #f3f7fa; padding: 40px; border-radius: 20px; }
+.guala-products > h2 { max-width: 580px; margin-bottom: 30px; }
+.guala-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; }
+.guala-card { min-width: 0; border: 1px solid #dce6ed; background: #fff; border-radius: 12px; padding: 28px; }
+.guala-products .guala-card { grid-column: span 2; display: flex; flex-direction: column; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.guala-products .guala-card:nth-last-child(-n+2) { grid-column: span 3; }
+.guala-products .guala-card:hover { border-color: #82c5d5; transform: translateY(-4px); box-shadow: 0 12px 24px #18485d0c; }
+.guala-card-top { display: flex; align-items: center; justify-content: space-between; }
+.guala-product-image { display: block; width: calc(100% + 56px); max-width: none; height: auto; aspect-ratio: 16 / 9; object-fit: cover; margin: -28px -28px 24px; border-radius: 12px 12px 0 0; background: #ebebeb; }
+.guala-number { color: #8293a3; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.guala-card h3 { font-size: 23px; font-weight: 650; letter-spacing: -.5px; color: #173b58; margin: 23px 0 12px; }
+.guala-products .guala-card p { font-size: 14px; }
+.guala-products .guala-card a { margin-top: auto; padding-top: 12px; border-top: 1px solid #e6edf2; font-size: 13px; justify-content: space-between; }
+.guala-topics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 40px 0; }
+.guala-topics .guala-card { padding: 36px; background: #eef5f9; border-color: transparent; }
+.guala-topics .guala-card:last-child { background: #f0f6ef; }
+.guala-topic-image { display: block; width: calc(100% + 72px); max-width: none; height: 220px; object-fit: cover; margin: -36px -36px 28px; border-radius: 12px 12px 0 0; }
+.guala-topics h2 { font-size: 28px; }
+.guala-source { display: flex; justify-content: space-between; align-items: center; gap: 32px; border-top: 1px solid #dce5ed; padding-top: 26px; }
+.guala-source p { max-width: 700px; font-size: 12px; margin: 0; }
+.guala-source a { flex-shrink: 0; font-size: 13px; }
+.guala-hub-link { margin: 0 0 32px; padding: 24px; border-radius: 12px; background: #edf4f8; display: flex; gap: 20px; align-items: center; justify-content: space-between; color: #15548c; }
+.guala-hub-link img { width: 180px; max-width: 40%; height: auto; }
+.guala-page a:focus-visible, .guala-feature a:focus-visible, .guala-hub-link:focus-visible { outline: 3px solid #00a5d2; outline-offset: 5px; }
+@media (max-width: 1000px) {
+  .guala-intro { grid-template-columns: 1fr 1fr; }
+  .guala-intro-copy { padding: 32px; }
+  .guala-intro-visual { min-height: 420px; padding: 24px; }
+  .guala-page .guala-text-link { margin-left: 0; display: flex; }
+  .guala-connection { gap: 28px; }
+  .guala-products { padding: 28px; }
+  .guala-card { padding: 22px; }
+  .guala-product-image { width: calc(100% + 44px); margin: -22px -22px 24px; }
+}
+@media (max-width: 760px) {
+  .guala-feature, .guala-intro, .guala-connection, .guala-topics { grid-template-columns: 1fr; gap: 24px; }
+  .guala-feature { padding: 40px 24px; }
+  .guala-page .content-heading h1 { font-size: 32px; }
+  .guala-intro { gap: 0; border-radius: 16px; }
+  .guala-intro-copy { padding: 30px 26px; }
+  .guala-page .guala-intro h2 { font-size: 39px; }
+  .guala-intro-visual { min-height: 300px; }
+  .guala-intro .guala-logo-panel { left: 24px; right: 24px; top: 24px; }
+  .guala-highlights { grid-template-columns: 1fr; gap: 18px; margin-bottom: 36px; padding: 24px 8px; }
+  .guala-highlights > span { justify-content: flex-start; }
+  .guala-highlights > span + span { border-left: 0; }
+  .guala-connection { margin-bottom: 40px; }
+  .guala-connection-image { height: 250px; }
+  .guala-products { padding: 26px 18px; border-radius: 16px; }
+  .guala-grid { grid-template-columns: 1fr; }
+  .guala-products .guala-card, .guala-products .guala-card:nth-last-child(-n+2) { grid-column: auto; }
+  .guala-topics .guala-card { padding: 28px; }
+  .guala-topic-image { width: calc(100% + 56px); margin: -28px -28px 24px; height: 190px; }
+  .guala-source { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .guala-hub-link { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guala-products .guala-card, .guala-page a > svg { transition: none; }
+  .guala-products .guala-card:hover, .guala-page a:hover > svg { transform: none; }
+}

@@ -185,6 +185,15 @@ export function HomeOverview() {
           alt="Glass beverage bottles sealed with metal crown caps alongside plastic closures"
         />
       </section>
+      <section className="guala-feature" aria-labelledby="guala-feature-title">
+        <div className="guala-logo-panel"><img src="/images/guala_logo.svg" alt="Guala Closures" width="318" height="55" /></div>
+        <div>
+          <span className="section-kicker">OUR CONNECTION TO THE GROUP</span>
+          <h2 id="guala-feature-title">Local expertise. A global perspective.</h2>
+          <p>Discover Guala Closures and Metal Crowns' place in its Crown Division, with closure solutions spanning spirits, wine, beverages, water and condiments.</p>
+          <Link href="/guala-closures">Get to know Guala Closures <ArrowRight size={18} /></Link>
+        </div>
+      </section>
       <div className="home-more">
         <div className="leadership-band">
           <section className="ceo-section">

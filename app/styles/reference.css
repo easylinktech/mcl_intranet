@@ -50,6 +50,17 @@ body {
 .portal-nav > a[aria-current="page"] {
   color: #fff;
 }
+.portal-header .nav-dropdown {
+  background: #fff;
+  opacity: 1;
+  animation: none;
+}
+.nav-group > button > svg {
+  transition: transform .2s;
+}
+.nav-group > button[aria-expanded="true"] > svg {
+  transform: rotate(180deg);
+}
 .portal-nav > a:after,
 .nav-group > button:after {
   bottom: 18px;
