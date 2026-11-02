@@ -9,6 +9,7 @@ import "./styles/reference.css";
 import "./styles/motion.css";
 import "./styles/home-sections.css";
 import "./styles/guala.css";
+import "./styles/footer.css";
 export const metadata: Metadata = {
   title: "MCL Connect | Our people. Our place.",
   description:
